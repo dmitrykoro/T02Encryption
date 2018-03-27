@@ -2,9 +2,9 @@ import org.kohsuke.args4j.*;
 import java.io.File;
 import java.util.regex.*;
 
-public class PasreCommandline {
+public class ParseCommandline {
     @Option(name = "-c", aliases = {"-d"}, metaVar = "key", required = true,
-            usage = "Set connection coding/decoding")
+            usage = "Encrypt or decrypt")
     private String key;
 
     @Option(name = "-o", metaVar = "outputName", usage = "Output file coding")
@@ -13,7 +13,7 @@ public class PasreCommandline {
     @Argument(required = true, metaVar = "inputName", usage = "Input file name")
     private String inputName;
 
-    public PasreCommandline() {
+    public ParseCommandline() {
 
     }
 }
