@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="T02Encryption" target="1.5" />
+      <module name="T02Encryption" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

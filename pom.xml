@@ -7,6 +7,18 @@
     <groupId>T02Entryption</groupId>
     <artifactId>myplugin</artifactId>
     <version>0.1</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <!-- https://mvnrepository.com/artifact/org.kohsuke.args4j/args4j-maven-plugin -->
     <!-- https://mvnrepository.com/artifact/org.kohsuke.args4j/args4j-maven-plugin -->
 
