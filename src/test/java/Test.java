@@ -1,42 +1,26 @@
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.zip.CheckedInputStream;
-import java.util.zip.CRC32;
 
 
-class Test {
+public class Test {
+
+    private GetChecksum test = new GetChecksum();
 
     @org.junit.jupiter.api.Test
-    void checkXOR() throws IOException {
-
-        CryptFile temp = new CryptFile("F9232");
-        temp.operate("input.txt", "output.txt");
-        temp.operate("output.txt", "output_operated.txt");
-        FileInputStream toOperate = new FileInputStream("input.txt");
-        FileInputStream operated = new FileInputStream(("output_operated.txt"));
-
-        try {
-            CheckedInputStream original;
-            CheckedInputStream processed;
-            original = new CheckedInputStream(
-                    new FileInputStream("input.txt"), new CRC32());
-            processed = new CheckedInputStream(
-                    new FileInputStream("output_operated.txt"), new CRC32());
-
-            byte[] buf = new byte[128];
-
-            while (original.read(buf) >= 0 && processed.read(buf) >= 0) {
-            }
-
-            long checksumInput = original.getChecksum().getValue();
-            long checksumOutput = processed.getChecksum().getValue();
-            assertEquals(checksumInput, checksumOutput);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-        toOperate.close();
-        operated.close();
+    void operate() throws IOException{
+        assertEquals(true, test.operateAndGetChecksum("F76329AC", "input.txt",
+                "output.txt", "output_operated.txt"));
+        assertEquals(true, test.operateAndGetChecksum("ffff5764329026721874512rt", "input1.txt",
+                "output1.txt", "output_operated1.txt"));
+        assertEquals(true, test.operateAndGetChecksum("", "input2.txt", "output2.txt",
+                "output_operated2.txt"));
+        assertEquals(true, test.operateAndGetChecksum("D", "input3.txt", "output3.txt",
+                "output_operated3.txt"));
+        assertEquals(true, test.operateAndGetChecksum("1732839", "input4.txt",
+                "output4.txt", "output_operated4.txt"));
+        assertEquals(true, test.operateAndGetChecksum("F8", "input5.txt",
+                "output5.txt", "output_operated5.txt"));
+        assertEquals(true, test.operateAndGetChecksum("7FFF541FFF", "input6.txt",
+                "output6.txt", "output_operated6.txt"));
     }
 }

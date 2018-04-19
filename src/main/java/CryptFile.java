@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class CryptFile{
+public class CryptFile {
 
     private String key;
 
@@ -9,17 +9,21 @@ public class CryptFile{
     }
 
     public void operate(String inputFile, String outputFile) {
-    XOR temp = new XOR(key);
+        XOR temp = new XOR(key);
         try {
             FileInputStream toOperate = new FileInputStream(inputFile);
             FileOutputStream operated = new FileOutputStream(outputFile);
             try {
                 byte[] inBytes = toOperate.readAllBytes();
-                    operated.write(temp.operate(inBytes));
-            } catch (IOException e) { throw new IllegalArgumentException(); }
+                operated.write(temp.operate(inBytes));
+            } catch (IOException e) {
+                throw new IllegalArgumentException();
+            }
             toOperate.close();
             operated.close();
-        } catch (FileNotFoundException e) { throw new IllegalArgumentException(); } catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            throw new IllegalArgumentException();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
